@@ -31,7 +31,7 @@ jobs:
         name: Build and push
         uses: docker/build-push-action@v2
         with:
-          context: .
+          context: ./Hodor/docker_build
           push: true
           tags: galbirk/hodor:latest
           cache-from: type=registry,ref=galbirk/hodor:buildcache
