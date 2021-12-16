@@ -8,29 +8,29 @@ with open("flag.txt", "r") as f:
   FLAG = f.read().strip()
 
 def pad (v):
-    q = FLAG
-    while (len(v) < len(q)):    
-        q = q[:len(v)]
-    while (len(q) < len(v)):    
-        q += v[len(q)%len(v)]
-    return v, q
+    f2 = FLAG
+    while (len(v) < len(f2)):    #f2 is longer, pad v to match
+        f2 = f2[:len(v)]
+    while (len(f2) < len(v)):    #v is longer, pad f2 to match
+        f2 += v[len(f2)%len(v)]
+    return v, f2
 
 def pow (v):
   return int(math.pow(len(FLAG), len(v)))
 
 def mod (v):
     v, f = pad (v)
-    w = []
-    for p in range(min(len(v), len(f))):
-        w.append(str((ord(v[p]) + ord(f[p])) % 2))
-    return '-'.join(w)
+    ans = []
+    for idx in range(min(len(v), len(f))):
+        ans.append(str((ord(v[idx]) + ord(f[idx])) % 2))
+    return '-'.join(ans)
 
 def div (v):
     v, f = pad (v)
-    w = []
-    for p in range(min(len(v), len(f))):
-        w.append(str(math.floor((ord(v[p]) + ord(f[p])) / 2))) 
-    return '-'.join(w)
+    ans = []
+    for idx in range(min(len(v), len(f))):
+        ans.append(str(math.floor((ord(v[idx]) + ord(f[idx])) / 2))) 
+    return '-'.join(ans)
 
 
 ARITHMETIC_FUNCS = [
@@ -46,11 +46,11 @@ def handle_connection(s, addr):
        "and I'll show you the calculation results!\n"
        "Note: the flag consists only of the characters: [a-z]\n").encode())
 
-  h = b''
+  data = b''
   while True:
-    p = h.find(b'\n')
-    if p == -1:
-      if len(h) > 128:
+    idx = data.find(b'\n')
+    if idx == -1:
+      if len(data) > 128:
         s.shutdown(socket.SHUT_RDWR)
         s.close()
         return
@@ -59,22 +59,22 @@ def handle_connection(s, addr):
       if not d:
         s.close()
         return
-      h += d
+      data += d
       continue
 
-    line = h[:p]
-    h = h[p+1:]
+    line = data[:idx]
+    data = data[idx+1:]
 
     test_string = line.decode("utf-8") 
 
-    n = []
-    n.append('')
+    response = []
+    response.append('')
     for afunc in ARITHMETIC_FUNCS:
       res = afunc(test_string)
-      n.append(f"{afunc.__name__:>8} {res:>4}")
-    n.append('')
-    n.append('')
-    s.sendall('\n'.join(n).encode())
+      response.append(f"{afunc.__name__:>8} {res:>4}")
+    response.append('')
+    response.append('')
+    s.sendall('\n'.join(response).encode())
   s.shutdown(socket.SHUT_RDWR)
   s.close()
 
