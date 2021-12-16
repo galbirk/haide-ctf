@@ -21,4 +21,15 @@ mariadb:
   service:
     name: db-svc
 
+hodor:
+  name: hodor
+  labels: hodor
+  replicas: 1
+  restartPolicy: Always
+  image: galbirk/hodor:latest
+  service:
+    type: LoadBalancer
+    port: 1337
+
+
 

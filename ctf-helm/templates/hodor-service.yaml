@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.hodor.name }}-svc
+spec:
+  selector:
+    app: {{ .Values.hodor.name }}
+  ports:
+  - port: {{ .Values.hodor.service.port }}
+    targetPort: 8000
+  type: {{ .Values.hodor.service.type }}
