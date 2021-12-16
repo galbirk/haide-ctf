@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.mariadb.service.name }}
+spec:
+  selector:
+    app: {{ .Values.mariadb.name }}
+  ports:
+  - port: 3306
+    targetPort: 3306

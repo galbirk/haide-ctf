@@ -1,0 +1,24 @@
+ctfd:
+  name: ctf-app
+  labels: ctf
+  replicas: 1
+  restartPolicy: Always
+  image: ctfd/ctfd
+  storageSize: 30Gi
+  secretName: ctf-secret
+  service:
+    type: LoadBalancer
+    port: 80
+
+mariadb:
+  name: mariadb
+  image: mariadb:10.4.12
+  secretName: ctf-db-env
+  storage:
+    volume: db-data
+    pvc: ctf-db-pvc
+    size: 40Gi
+  service:
+    name: db-svc
+
+

@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.mariadb.name }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ .Values.mariadb.name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.mariadb.name }}
+    spec:
+      containers:
+        - name: {{ .Values.mariadb.name }}
+          image: {{ .Values.mariadb.image }}
+          volumeMounts:
+            - mountPath: /var/lib/mysql
+              name: {{ .Values.mariadb.storage.volume }}
+          envFrom:
+            - secretRef:
+                name: {{ .Values.mariadb.secretName }}
+          resources:
+            limits:
+              memory: "512Mi"
+              cpu: "500m"
+          ports:
+            - containerPort: 3306
+      volumes:
+        - name: {{ .Values.mariadb.storage.volume }}
+          persistentVolumeClaim:
+            claimName: {{ .Values.mariadb.storage.pvc }}

@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.ctfd.name }}
+spec:
+  replicas: {{ .Values.ctfd.replicas }}
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 1
+  selector:
+    matchLabels:
+      app: {{ .Values.ctfd.labels }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.ctfd.labels }}
+    spec:
+      restartPolicy: {{ .Values.ctfd.restartPolicy }}
+      containers:
+        - name: {{ .Values.ctfd.name }}
+          image: {{ .Values.ctfd.image }}
+          resources:
+            limits:
+              memory: "512Mi"
+              cpu: "500m"
+          volumeMounts:
+            - mountPath: /var
+              name: {{ .Values.ctfd.labels }}-data
+          env:
+            - name: UPLOAD_FOLDER
+              value: /var/uploads
+            - name: LOG_FOLDER
+              value: /var/log/CTFd
+            - name: DATABASE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.ctfd.secretName }}
+                  key: dbURL
+          ports:
+            - containerPort: 8000
+      volumes:
+          - name: {{ .Values.ctfd.labels }}-data
+            persistentVolumeClaim:
+              claimName: {{ .Values.ctfd.labels }}-app-pvc
