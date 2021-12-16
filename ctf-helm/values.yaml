@@ -30,6 +30,7 @@ hodor:
   service:
     type: LoadBalancer
     port: 1337
+    targetPort: 1337
 
 
 
