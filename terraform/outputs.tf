@@ -6,6 +6,13 @@ output "kubernetes_cluster_name" {
   value = azurerm_kubernetes_cluster.default.name
 }
 
+# output "azure_disk_id" {
+#     value = azurerm_managed_disk.pvDisk.id
+# }
+
+# output "azure_disk_name" {
+#     value = azurerm_managed_disk.pvDisk.name
+# }
 # output "host" {
 #   value = azurerm_kubernetes_cluster.default.kube_config.0.host
 # }

@@ -17,3 +17,9 @@ variable "prefix" {
     type = string
     default = "ctf"
 }
+
+variable "region" {
+    description = "Azure Region"
+  type = string
+  default = "West Europe"
+}
