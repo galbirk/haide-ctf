@@ -1,0 +1,1 @@
+time of memory image: flag{13:39:05}

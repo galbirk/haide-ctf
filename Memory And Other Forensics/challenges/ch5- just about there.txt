@@ -1,0 +1,7 @@
+so you know the key, but which encryption type exactly did they use?
+note - enter the very exact type and version.
+
+flag format: FLAG{NAME-VERSION}
+
+see this for help:
+https://link.medium.com/9Qiw0oHzNlb

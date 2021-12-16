@@ -1,0 +1,3 @@
+what is the pid of the victim's openned passwords file process?
+
+flag format: FLAG{pid}

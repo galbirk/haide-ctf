@@ -1,0 +1,1 @@
+zip hidden in picture, change suffix to zip then iterate with script to find the flag.JPG (47,6)
