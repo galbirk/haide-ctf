@@ -18,5 +18,5 @@ To learn more about the release, try:
      NOTE: It may take a few minutes for the LoadBalancer IP to be available.
            You can watch the status of by running 'kubectl get --namespace default svc -w {{ .Values.hodor.name }}-svc'
   export SERVICE_IP_HODOR=$(kubectl get svc --namespace default {{ .Values.hodor.name }}-svc --template "{{"{{ range (index .status.loadBalancer.ingress 0) }}{{.}}{{ end }}"}}")
-  echo nc $SERVICE_IP_HODOR {{ .Values.hodor.service.port }}
+  nc $SERVICE_IP_HODOR {{ .Values.hodor.service.port }}
 {{- end }}

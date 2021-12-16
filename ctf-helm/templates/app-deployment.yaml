@@ -40,6 +40,7 @@ spec:
                   key: dbURL
           ports:
             - containerPort: 8000
+          imagePullPolicy: Always
       volumes:
           - name: {{ .Values.ctfd.labels }}-data
             persistentVolumeClaim:
