@@ -1,3 +1,4 @@
-from seeying the welcome page of out website we suspect the website was hacked.
-the hacker probably left a backdoor on the server.
+from looking at the welcome page of our website we suspect the website was hacked.
+seems like the hacker left a backdoor on the server.
 will you find the backdoor?
+we will pay you on fiver (;
