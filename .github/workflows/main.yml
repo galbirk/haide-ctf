@@ -43,4 +43,4 @@ jobs:
     steps:
     - name: Rolling Update docker-compose
       run: |
-        echo "..."
+        echo "To be continued"
