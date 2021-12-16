@@ -32,5 +32,16 @@ hodor:
     port: 1337
     targetPort: 1337
 
+path:
+  name: path-not-taken
+  labels: path
+  replicas: 1
+  restartPolicy: Always
+  image: galbirk/path:latest
+  service:
+    type: LoadBalancer
+    port: 80
+    targetPort: 80
+
 
 
