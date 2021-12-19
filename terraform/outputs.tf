@@ -6,6 +6,9 @@ output "kubernetes_cluster_name" {
   value = azurerm_kubernetes_cluster.default.name
 }
 
+output "helm_release_name" {
+  value = helm_release.ctfRelease.name
+}
 # output "azure_disk_id" {
 #     value = azurerm_managed_disk.pvDisk.id
 # }

@@ -16,7 +16,7 @@ resource "azurerm_kubernetes_cluster" "default" {
   default_node_pool {
     name            = "default"
     node_count      = 2
-    vm_size         = "Standard_DS2_v2"
+    vm_size         = "Standard_B4ms"
     os_disk_size_gb = 30
   }
 
@@ -33,36 +33,14 @@ resource "azurerm_kubernetes_cluster" "default" {
   }
 }
 
-# resource "azurerm_managed_disk" "pvDisk" {
-#   name                 = "aks-pv-disk"
-#   location             = var.region
-#   resource_group_name  = azurerm_resource_group.default.name
-#   storage_account_type = "Standard_LRS"
-#   create_option        = "Empty"
-#   disk_size_gb         = "50"
 
-#   tags = {
-#     Application = "CTFAKS"
+# provider "helm" {
+#   kubernetes {
+#     config_path = "./.kube/config"
 #   }
 # }
 
-
-# resource "kubernetes_persistent_volume_v1" "ctfPV" {
-#   metadata {
-#     name = "ctf-pv"
-#   }
-#   spec {
-#     capacity = {
-#       storage = "45Gi"
-#     }
-#     access_modes = ["ReadWriteOnce"]
-#     persistent_volume_source {
-#        azure_disk {
-#         caching_mode  = "None"
-#         data_disk_uri = azurerm_managed_disk.pvDisk.id
-#         disk_name     = azurerm_managed_disk.pvDisk.name
-#         kind          = "Managed"
-#       }
-#     }
-#   }
+# resource "helm_release" "ctfRelease" {
+#   name       = "ctf-release"
+#   chart      = "../ctf-helm"
 # }
