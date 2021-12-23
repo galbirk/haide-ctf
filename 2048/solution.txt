@@ -1,0 +1,7 @@
+connect to web game,
+win to get address and credentials of server, (cheat: F12>application>storage>local storage>vue2048>change cell values and score)
+connect to server,
+find .git hidden directory in apache home directory, -> understand that this is a mistake
+run "git reflog" to discover id of commit where flag was added,
+run "git reset <commit_id> --hard" to reset git HEAD pointer and restore flag file,
+enter the flag.
