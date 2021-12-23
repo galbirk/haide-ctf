@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.2048.name }}
+spec:
+  replicas: {{ .Values.2048.replicas }}
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 1
+  selector:
+    matchLabels:
+      app: {{ .Values.2048.name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.2048.name }}
+    spec:
+      restartPolicy: {{ .Values.2048.restartPolicy }}
+      containers:
+        {{- range untilStep 10 20 1 }}
+            - name: {{ .Values.2048.name }}-{{ . }}
+              image: {{ .Values.2048.image }}
+                resources:
+                  limits:
+                    memory: "128Mi"
+                    cpu: "250m"
+              env:
+                - name: APACHE_PORT
+                  value: 80{{ . }}
+                - name: SSH_PORT
+                  value: 22{{ . }}
+              ports:
+                - containerPort: 80{{ . }}
+                - containerPort: 22{{ . }}
+        {{- end }}
