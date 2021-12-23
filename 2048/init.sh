@@ -11,4 +11,4 @@ echo "root:Aa123456" | chpasswd
 
 service apache2 start
 
-exec 2>&1 /usr/sbin/sshd -D -e -p 2${SSH_PORT}
+exec 2>&1 /usr/sbin/sshd -D -e -p ${SSH_PORT}
