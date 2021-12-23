@@ -45,7 +45,6 @@ path:
 
 TwentyFortyEight:
   name: twentyfortyeight
-  # numberOfTeams = DesiredNumber + 10 
   numberOfTeams: 4
   replicas: 1
   restartPolicy: Always
