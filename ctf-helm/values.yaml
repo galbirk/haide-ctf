@@ -47,7 +47,7 @@ TwentyFortyEight:
   name: twentyfortyeight
   replicas: 1
   restartPolicy: Always
-  image: galbirk/TwentyFortyEight:latest
+  image: galbirk/twentyfortyeight:latest
   service:
     name: twentyfortyeight
     type: LoadBalancer

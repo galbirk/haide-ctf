@@ -4,7 +4,7 @@
 sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
 
 # Change Apache Port
-sed -i 's/Listen 80/Listen 80'"$APACHE_PORT"'/g' /etc/apache2/ports.conf
+sed -i 's/Listen 80/Listen '"$APACHE_PORT"'/g' /etc/apache2/ports.conf
 
 
 echo "root:Aa123456" | chpasswd
