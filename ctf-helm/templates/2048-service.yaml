@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.TwentyFortyEight.service.name }}-svc
+spec:
+  selector:
+    app: {{ .Values.TwentyFortyEight.name }}
+  ports:
+  {{- range untilStep 10 13 1 }}
+    - port: 80{{ . }}
+      targetPort: 80{{ . }}
+      name: port-80{{ . }}
+    - port: 22{{ . }}
+      targetPort: 22{{ . }}
+      name: port-22{{ . }}
+  {{- end }}
+  type: {{ .Values.TwentyFortyEight.service.type }}

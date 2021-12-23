@@ -1,9 +1,10 @@
+{{- $root := . -}}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Values.2048.name }}
+  name: {{ .Values.TwentyFortyEight.name }}
 spec:
-  replicas: {{ .Values.2048.replicas }}
+  replicas: {{ .Values.TwentyFortyEight.replicas }}
   strategy:
     type: RollingUpdate
     rollingUpdate:
@@ -11,27 +12,27 @@ spec:
       maxSurge: 1
   selector:
     matchLabels:
-      app: {{ .Values.2048.name }}
+      app: {{ .Values.TwentyFortyEight.name }}
   template:
     metadata:
       labels:
-        app: {{ .Values.2048.name }}
+        app: {{ .Values.TwentyFortyEight.name }}
     spec:
-      restartPolicy: {{ .Values.2048.restartPolicy }}
+      restartPolicy: {{ .Values.TwentyFortyEight.restartPolicy }}
       containers:
-        {{- range untilStep 10 20 1 }}
-            - name: {{ .Values.2048.name }}-{{ . }}
-              image: {{ .Values.2048.image }}
-                resources:
-                  limits:
-                    memory: "128Mi"
-                    cpu: "250m"
-              env:
-                - name: APACHE_PORT
-                  value: 80{{ . }}
-                - name: SSH_PORT
-                  value: 22{{ . }}
-              ports:
-                - containerPort: 80{{ . }}
-                - containerPort: 22{{ . }}
-        {{- end }}
+    {{- range untilStep 10 13 1 }}
+        - name: {{ $root.Values.TwentyFortyEight.name }}-{{ . }}
+          image: {{ $root.Values.TwentyFortyEight.image }}
+          resources:
+            limits:
+              memory: "128Mi"
+              cpu: "250m"
+          env:
+            - name: APACHE_PORT
+              value: "80{{ . }}"
+            - name: SSH_PORT
+              value: "22{{ . }}"
+          ports:
+            - containerPort: 80{{ . }}
+            - containerPort: 22{{ . }}
+    {{- end }}

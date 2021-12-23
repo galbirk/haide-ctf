@@ -43,5 +43,17 @@ path:
     port: 80
     targetPort: 80
 
+TwentyFortyEight:
+  name: TwentyFortyEight
+  replicas: 1
+  restartPolicy: Always
+  image: galbirk/TwentyFortyEight:latest
+  service:
+    name: twentyfortyeight
+    type: LoadBalancer
+    port: 80
+    targetPort: 80
+
+
 
 
