@@ -31,7 +31,7 @@ jobs:
         name: Build and push twentyfortyeight
         uses: docker/build-push-action@v2
         with:
-          context: ./twentyfortyeight/docker_build
+          context: ./2048s
           push: true
           tags: galbirk/twentyfortyeight:latest
           cache-from: type=registry,ref=galbirk/twentyfortyeight:buildcache
