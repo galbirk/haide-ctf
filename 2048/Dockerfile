@@ -17,7 +17,7 @@ RUN apt update \
 
 # Setup Vulnerability Environment
 
-ADD source.tar /var/www/
+ADD source.tar /var/www/html
 
 COPY ./init.sh /root
 
