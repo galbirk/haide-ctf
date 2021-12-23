@@ -44,7 +44,7 @@ path:
     targetPort: 80
 
 TwentyFortyEight:
-  name: TwentyFortyEight
+  name: twentyfortyeight
   replicas: 1
   restartPolicy: Always
   image: galbirk/TwentyFortyEight:latest
