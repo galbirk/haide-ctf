@@ -56,5 +56,17 @@ TwentyFortyEight:
     targetPort: 80
 
 
+jail:
+  name: jail
+  labels: jail
+  replicas: 1
+  restartPolicy: Always
+  image: galbirk/jail:latest
+  service:
+    type: LoadBalancer
+    port: 7007
+    targetPort: 7007
+
+
 
 

@@ -27,7 +27,7 @@ def handle_connection(s, addr):
 def main():
   with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-    s.bind(('0.0.0.0', 1337))
+    s.bind(('0.0.0.0', 7007))
     s.listen(256)
 
     while True:

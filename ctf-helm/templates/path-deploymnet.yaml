@@ -27,3 +27,5 @@ spec:
               cpu: "500m"
           ports:
             - containerPort: 80
+          imagePullPolicy: Always
+          

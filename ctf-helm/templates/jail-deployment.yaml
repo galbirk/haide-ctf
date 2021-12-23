@@ -1,9 +1,9 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Values.hodor.name }}
+  name: {{ .Values.jail.name }}
 spec:
-  replicas: {{ .Values.hodor.replicas }}
+  replicas: {{ .Values.jail.replicas }}
   strategy:
     type: RollingUpdate
     rollingUpdate:
@@ -11,20 +11,20 @@ spec:
       maxSurge: 1
   selector:
     matchLabels:
-      app: {{ .Values.hodor.name }}
+      app: {{ .Values.jail.name }}
   template:
     metadata:
       labels:
-        app: {{ .Values.hodor.name }}
+        app: {{ .Values.jail.name }}
     spec:
-      restartPolicy: {{ .Values.hodor.restartPolicy }}
+      restartPolicy: {{ .Values.jail.restartPolicy }}
       containers:
-        - name: {{ .Values.hodor.name }}
-          image: {{ .Values.hodor.image }}
+        - name: {{ .Values.jail.name }}
+          image: {{ .Values.jail.image }}
           resources:
             limits:
               memory: "256Mi"
               cpu: "500m"
           ports:
-            - containerPort: 1337
+            - containerPort: 7007
           imagePullPolicy: Always
