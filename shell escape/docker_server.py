@@ -2,6 +2,7 @@
 import threading
 import socket
 import subprocess
+import shlex
 
 def handle_connection(s, addr):
   subprocess.call(r"C:\Windows\System32\cmd.exe")# ("./home/root/bashjail.sh")
@@ -29,7 +30,7 @@ def handle_connection(s, addr):
     data = data[idx+1:]
 
     test_string = line.decode("utf-8") 
-
+    command = ['cmd.exe', '/c', ]
 
     p = subprocess.Popen(['cmd.exe', '/c', ], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     output, err = p.communicate(b"input data that is passed to subprocess' stdin")
