@@ -6,19 +6,23 @@ import subprocess
 def handle_connection(s, addr):
 
   while True:
-      s.send("Enter your command: ".encode("utf-8"))
+      s.send("Enter your command >>> ".encode("utf-8"))
       d = s.recv(1024)
       if not d:
+        s.shutdown(socket.SHUT_RDWR)
         s.close()
         return
       idx = d.find(b'\n')
       line = d[:idx]
-      response=subprocess.check_output(["/root/test.sh",line.decode("utf-8")])
+      command = [
+        "/root/test.sh", 
+        line.decode("utf-8")
+                ]
+      try:
+        response = subprocess.check_output(command)
+      except:
+        response = "invalid syntax".encode('utf-8')
       s.send(response)
-      continue
-    
-  s.shutdown(socket.SHUT_RDWR)
-  s.close()
 
 def main():
   with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
