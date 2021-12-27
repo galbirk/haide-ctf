@@ -1,4 +1,4 @@
 finish what's left and recover the file.
 
-note, the flag is a fruit, as usually.
+note, the flag is a fruit, as usual.
 flag format: FLAG{fruit}
