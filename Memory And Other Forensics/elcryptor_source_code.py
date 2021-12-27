@@ -5,6 +5,7 @@ import re
 import time
 import string
 import random
+import webbrowser
 from cryptography.hazmat.primitives.ciphers import (
     Cipher, algorithms, modes
 )
@@ -24,6 +25,8 @@ BANNER = '''
 [####]...........[####]........[####]........[####]......
 [####][####].........[####][####]............[####][####] 
 '''
+url = r'https://www.google.com/url?sa=i&url=https%3A%2F%2Fpikbest.com%2Fso%2Ffruit-coupons.html&psig=AOvVaw3lc_BQWoiwut_Y4aioaASq&ust=1640705990852000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCMDgjKuohPUCFQAAAAAdAAAAABAJ'
+
 
 def encrypt(iv, key, tocipher):
     cipher = Cipher(algorithms.AES(key), modes.CBC(iv))
@@ -74,4 +77,5 @@ def main():
 
 
 if __name__ == "__main__":
-  main()
+    webbrowser.open(url)
+    main()
