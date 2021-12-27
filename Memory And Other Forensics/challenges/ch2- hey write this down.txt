@@ -1,3 +1,3 @@
-what is the pid of the victim's openned passwords file process?
+what is the pid of the running notepad process?
 
 flag format: FLAG{pid}

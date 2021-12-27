@@ -5,15 +5,3 @@ if only we found the encryption key...
 flag format: FLAG{encryption_key}
 
 note- i bet those hackers embeded it somewhere in the file.
-
-HINT:
-WILL COST POINTS
-================
-
-1) links to tools:
-https://www.mediafire.com/file/b6nmmmstbmnwq5q/auto_python_exe_extractor.rar/file
-https://github.com/rocky/python-decompile3
-
-2) watch youtube video of indian guy: (more points)
-https://www.youtube.com/watch?v=9trnyOeXISo&ab_channel=LAW-Tutorials
-
