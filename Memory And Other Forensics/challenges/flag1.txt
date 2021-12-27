@@ -1,1 +1,1 @@
-time of memory image: flag{13:39:05}
+Profile of memory image: flag{Win7SP1x64}
