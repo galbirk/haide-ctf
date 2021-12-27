@@ -15,7 +15,7 @@ def handle_connection(s, addr):
       idx = d.find(b'\n')
       line = d[:idx]
       command = [
-        "/root/jail.sh", 
+        "/server/jail.sh", 
         line.decode("utf-8")
                 ]
       try:
