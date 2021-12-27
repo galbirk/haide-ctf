@@ -2,6 +2,3 @@ finish what's left and recover the file.
 
 note, the flag is a fruit, as usually.
 flag format: FLAG{fruit}
-
-see this for help:
-https://link.medium.com/9Qiw0oHzNlb
