@@ -12,6 +12,6 @@ if check_space "$input"
 then
     echo -e '\033[0;31mRestricted characters has been used\033[0m'
 else
-    output="echo output is: $input"
+    output="echo Your command is: $input"
     eval $output
 fi
