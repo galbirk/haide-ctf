@@ -20,7 +20,7 @@ def handle_connection(s, addr):
                 ]
       try:
         response = subprocess.check_output(command)
-      except Exception as e:
+      except:
         response = "invalid syntax".encode('utf-8')
       s.send(response)
 
