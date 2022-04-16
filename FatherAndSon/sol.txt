@@ -1,0 +1,10 @@
+KDBX pass is "KeepassMasterPass:)"
+Zip Pass is inside KDBX "iwonderwhatsinside"
+drive: https://drive.google.com/file/d/1oc2SqqRMmvGJw92aBcxvAt43EovejDFi/view?usp=sharing
+
+1. look at processes PSTREE, see chrome opening CMD (suspicios)
+2. internet explorer was trying to reach googledrive which contains the KDBX file (keepass db)
+2. CMD has the command "The flag is in a ZIP file which is protected by a password. We know the user was working with KeePass recently..."
+3. Download KDBX and use volatility clipboard plugin to get the master password
+4. Open keepass and get the zip password
+5. Dump the zip file (resident in MFT and not in filescan)
