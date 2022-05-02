@@ -8,7 +8,7 @@ WORKDIR /var/www/app/static
 
 COPY secret.html secret.png ./
 
-COPY flag.txt ../
+COPY flag ../
 
 EXPOSE 80
 
