@@ -51,6 +51,13 @@ resource "azurerm_kubernetes_cluster" "default" {
 }
 
 ####### Windows VMS #########
+resource "random_password" "admin_password" {
+  length      = 10
+  special     = false
+  min_numeric = 1
+  min_lower   = 1
+  min_upper   = 1
+}
 
 resource "azurerm_public_ip" "winPublic" {
   count               = var.teams
@@ -101,7 +108,7 @@ resource "azurerm_virtual_machine" "winVm" {
   os_profile {
     computer_name  = "team${count.index}-vm"
     admin_username = "ctf"
-    admin_password = "Aa123456"
+    admin_password = random_password.admin_password.result
   }
   os_profile_windows_config {
     # need this for vm extensions
@@ -120,16 +127,16 @@ resource "azurerm_virtual_machine" "winVm" {
 # vars to use for scripts
 locals {
   define_wireshark_url = "$wireshark_url = 'https://1.as.dl.wireshark.org/win64/Wireshark-win64-3.6.5.exe'"
-  download_wireshark   = "Invoke-WebRequest -Uri $wireshark_url -OutFile C:\\Packages\\Wireshark-win64-3.6.5.exe"
+  download_wireshark   = "Invoke-WebRequest -Uri $wireshark_url -OutFile C:/Packages/Wireshark-win64-3.6.5.exe"
   install_choco        = "Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))"
   install_usbpcap      = "choco install usbpcap"
-  install_wireshark    = "C:\\Packages\\Wireshark-win64-3.6.5.exe /S /desktopicon=yes /quicklaunchicon=yes /EXTRACOMPONENTS=sshdump,udpdump,ciscodump,randpktdump"
+  install_wireshark    = "C:/Packages/Wireshark-win64-3.6.5.exe /S /desktopicon=yes /quicklaunchicon=yes /EXTRACOMPONENTS=sshdump,udpdump,ciscodump,randpktdump"
   powershell_command   = "${local.define_wireshark_url}; ${local.download_wireshark}; ${local.install_choco}; ${local.install_usbpcap}; ${local.install_wireshark}"
 }
 
 # WireShark Installation
 resource "azurerm_virtual_machine_extension" "InstallWireshark" {
-  count = var.teams
+  count                      = var.teams
   name                       = "install-wireshark-${count.index}"
   virtual_machine_id         = element(azurerm_virtual_machine.winVm.*.id, count.index)
   publisher                  = "Microsoft.Compute"

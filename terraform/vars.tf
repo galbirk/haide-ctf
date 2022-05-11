@@ -19,7 +19,7 @@ variable "region" {
 variable "teams" {
   description = "Number of teams"
   type        = number
-  default     = 1
+  default     = 2
 }
 
 variable "win_vm_image" {
