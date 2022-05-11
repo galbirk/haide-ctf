@@ -19,5 +19,23 @@ variable "region" {
 variable "teams" {
   description = "Number of teams"
   type        = number
-  default     = 4
-}   
+  default     = 1
+}
+
+variable "win_vm_image" {
+  description = "Windows Image Information"
+  type = object(
+    {
+      publisher = string
+      offer     = string
+      sku       = string
+      version   = string
+    }
+  )
+  default = {
+    publisher = "MicrosoftWindowsServer"
+    offer     = "WindowsServer"
+    sku       = "2019-Datacenter"
+    version   = "latest"
+  }
+}

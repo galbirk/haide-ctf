@@ -6,9 +6,18 @@ output "kubernetes_cluster_name" {
   value = azurerm_kubernetes_cluster.default.name
 }
 
-output "helm_release_name" {
-  value = helm_release.ctfRelease.name
+output "kube_config" {
+  value = azurerm_kubernetes_cluster.default.kube_admin_config_raw
+
+  sensitive = true
 }
+
+output "windows_vm_ips" {
+  value = azurerm_public_ip.winPublic.*.ip_address
+}
+# output "helm_release_name" {
+#   value = helm_release.ctfRelease.name
+# }
 # output "azure_disk_id" {
 #     value = azurerm_managed_disk.pvDisk.id
 # }

@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: Shell Escape Challenge CI/CD
+name: Jailbreak Shell Escape Challenge CI/CD
 
 # Controls when the workflow will run
 on:
@@ -31,7 +31,7 @@ jobs:
         name: Build and push jail
         uses: docker/build-push-action@v2
         with:
-          context: ./shell_escape
+          context: ./jailbreak
           push: true
           tags: galbirk/jail:latest
           cache-from: type=registry,ref=galbirk/jail:buildcache
