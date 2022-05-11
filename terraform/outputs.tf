@@ -15,6 +15,10 @@ output "kube_config" {
 output "windows_vm_ips" {
   value = azurerm_public_ip.winPublic.*.ip_address
 }
+
+output "vms_password" {
+  value = nonsensitive(random_password.admin_password.result)
+}
 # output "helm_release_name" {
 #   value = helm_release.ctfRelease.name
 # }
