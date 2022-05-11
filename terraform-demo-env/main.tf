@@ -10,7 +10,7 @@ resource "azurerm_container_group" "birk-cg" {
   name                = var.container_name
   location            = azurerm_resource_group.birk-rg.location
   resource_group_name = azurerm_resource_group.birk-rg.name
-  ip_address_type     = "public"
+  ip_address_type     = "Public"
   dns_name_label      = var.dns_label
   os_type             = "Linux"
 

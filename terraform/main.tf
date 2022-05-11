@@ -1,5 +1,5 @@
 resource "azurerm_resource_group" "default" {
-  name     = "${var.rg-name}"
+  name     = var.rg-name
   location = var.region
 
   tags = {
@@ -14,13 +14,15 @@ resource "azurerm_kubernetes_cluster" "default" {
   dns_prefix          = "${var.prefix}-k8s"
 
   default_node_pool {
-    name            = "default"
-    node_count      = 2
-    vm_size         = "Standard_B4ms"
-    os_disk_size_gb = 30
+    name       = "default"
+    node_count = 4
+    # 4/5
+    vm_size = "Standard_F16s_v2"
+    # Standard_B4ms
+    os_disk_size_gb = 80
   }
 
-  
+
   identity {
     type = "SystemAssigned"
   }
