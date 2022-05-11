@@ -29,12 +29,9 @@ spec:
               memory: "128Mi"
               cpu: "250m"
           env:
-            - name: APACHE_PORT
-              value: "80{{ . }}"
-            - name: SSH_PORT
-              value: "22{{ . }}"
+            - name: PORT
+              value: "70{{ . }}"
           ports:
-            - containerPort: 80{{ . }}
-            - containerPort: 22{{ . }}
+            - containerPort: 70{{ . }}
           imagePullPolicy: Always
     {{- end }}

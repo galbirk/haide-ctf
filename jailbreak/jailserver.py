@@ -2,6 +2,7 @@
 import threading
 import socket
 import subprocess
+import os
 
 def handle_connection(s, addr):
   s.send("\r\nHello.\r\nwelcome to jailbreak challenge.".encode("utf-8"))
@@ -27,7 +28,7 @@ def handle_connection(s, addr):
 def main():
   with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-    s.bind(('0.0.0.0', 7007))
+    s.bind(('0.0.0.0', int(os.getenv('PORT',7007))))
     s.listen(256)
 
     while True:

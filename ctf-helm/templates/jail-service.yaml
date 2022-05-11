@@ -10,7 +10,7 @@ spec:
   {{ $count :=  ( add 10 .Values.numberOfTeams | int) }}
   {{- range untilStep 10 $count 1 }}
     - port: 70{{ . }}
-      targetPort: 7007
-      name: port-7007{{ . }}
+      targetPort: 70{{ . }}
+      name: port-70{{ . }}
   {{- end }}
   type: {{ .Values.jail.service.type }}
