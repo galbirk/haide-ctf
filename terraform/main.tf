@@ -129,9 +129,10 @@ locals {
   define_wireshark_url = "$wireshark_url = 'https://1.as.dl.wireshark.org/win64/Wireshark-win64-3.6.5.exe'"
   download_wireshark   = "Invoke-WebRequest -Uri $wireshark_url -OutFile C:/Packages/Wireshark-win64-3.6.5.exe"
   install_choco        = "Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))"
-  install_usbpcap      = "choco install usbpcap"
+  install_usbpcap      = "choco install usbpcap -y"
   install_wireshark    = "C:/Packages/Wireshark-win64-3.6.5.exe /S /desktopicon=yes /quicklaunchicon=yes /EXTRACOMPONENTS=sshdump,udpdump,ciscodump,randpktdump"
-  powershell_command   = "${local.define_wireshark_url}; ${local.download_wireshark}; ${local.install_choco}; ${local.install_usbpcap}; ${local.install_wireshark}"
+  install_chrome = "$Installer = $env:TEMP + '/chrome_installer.exe'; Invoke-WebRequest 'http://dl.google.com/chrome/install/375.126/chrome_installer.exe' -OutFile $Installer; Start-Process -FilePath $Installer -Args '/silent /install' -Verb RunAs -Wait; Remove-Item $Installer"
+  powershell_command   = "${local.define_wireshark_url}; ${local.download_wireshark}; ${local.install_choco}; ${local.install_usbpcap}; ${local.install_wireshark}; ${local.install_chrome}"
 }
 
 # WireShark Installation
