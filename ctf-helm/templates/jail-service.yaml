@@ -1,3 +1,4 @@
+{{- $root := . -}}
 apiVersion: v1
 kind: Service
 metadata:
@@ -6,6 +7,10 @@ spec:
   selector:
     app: {{ .Values.jail.name }}
   ports:
-  - port: {{ .Values.jail.service.port }}
-    targetPort: {{ .Values.jail.service.targetPort }}
+  {{ $count :=  ( add 10 .Values.numberOfTeams | int) }}
+  {{- range untilStep 10 $count 1 }}
+    - port: 70{{ . }}
+      targetPort: 7007
+      name: port-7007{{ . }}
+  {{- end }}
   type: {{ .Values.jail.service.type }}

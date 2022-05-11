@@ -1,3 +1,4 @@
+{{- $root := . -}}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -19,12 +20,21 @@ spec:
     spec:
       restartPolicy: {{ .Values.jail.restartPolicy }}
       containers:
-        - name: {{ .Values.jail.name }}
-          image: {{ .Values.jail.image }}
+    {{ $count :=  ( add 10 .Values.numberOfTeams | int) }}
+    {{- range untilStep 10 $count 1 }}
+        - name: {{ $root.Values.jail.name }}-{{ . }}
+          image: {{ $root.Values.jail.image }}
           resources:
             limits:
-              memory: "256Mi"
-              cpu: "500m"
+              memory: "128Mi"
+              cpu: "250m"
+          env:
+            - name: APACHE_PORT
+              value: "80{{ . }}"
+            - name: SSH_PORT
+              value: "22{{ . }}"
           ports:
-            - containerPort: 7007
+            - containerPort: 80{{ . }}
+            - containerPort: 22{{ . }}
           imagePullPolicy: Always
+    {{- end }}

@@ -7,7 +7,7 @@ spec:
   selector:
     app: {{ .Values.TwentyFortyEight.name }}
   ports:
-  {{ $count :=  ( add 10 .Values.TwentyFortyEight.numberOfTeams | int) }}
+  {{ $count :=  ( add 10 .Values.numberOfTeams | int) }}
   {{- range untilStep 10 $count 1 }}
     - port: 80{{ . }}
       targetPort: 80{{ . }}

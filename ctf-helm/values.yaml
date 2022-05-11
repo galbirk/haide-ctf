@@ -1,3 +1,6 @@
+# Number of Participents teams/players
+numberOfTeams: 1
+
 ctfd:
   name: ctf-app
   labels: ctf
@@ -45,7 +48,6 @@ path:
 
 TwentyFortyEight:
   name: twentyfortyeight
-  numberOfTeams: 4
   replicas: 1
   restartPolicy: Always
   image: galbirk/twentyfortyeight:latest
@@ -63,6 +65,7 @@ jail:
   restartPolicy: Always
   image: galbirk/jail:latest
   service:
+    name: jail
     type: LoadBalancer
     port: 7007
     targetPort: 7007

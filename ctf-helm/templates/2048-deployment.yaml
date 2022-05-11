@@ -20,7 +20,7 @@ spec:
     spec:
       restartPolicy: {{ .Values.TwentyFortyEight.restartPolicy }}
       containers:
-    {{ $count :=  ( add 10 .Values.TwentyFortyEight.numberOfTeams | int) }}
+    {{ $count :=  ( add 10 .Values.numberOfTeams | int) }}
     {{- range untilStep 10 $count 1 }}
         - name: {{ $root.Values.TwentyFortyEight.name }}-{{ . }}
           image: {{ $root.Values.TwentyFortyEight.image }}
