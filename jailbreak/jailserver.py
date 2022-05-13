@@ -6,7 +6,7 @@ import os
 
 def handle_connection(s, addr):
   s.send("\r\nHello.\r\nwelcome to jailbreak challenge.".encode("utf-8"))
-  s.send("HINT --> flag location is: ./flag".encode("utf-8"))
+  s.send("\r\nHINT --> flag location is: ./flag".encode("utf-8"))
   while True:
       s.send("\r\n\nEnter your command >>> ".encode("utf-8"))
       d = s.recv(1024)
