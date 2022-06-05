@@ -34,6 +34,7 @@ cd haide-ctf/terraform
 - enter your azure subscription id in [terraform/providers.tf](./terraform/providers.tf) file.
 ## Deploy AKS Cluster with terraform
 ```bash
+cd ./terraform
 # in haide-ctf/terraform
 terraform init
 terraform plan 
@@ -48,7 +49,7 @@ terrafrom output kube_config
 
 # az cli
 az account set --subscription <subscription_id>
-az aks get-credentials --resource-group <cluster_resource_group>--name <cluster_name>
+az aks get-credentials --resource-group <cluster_resource_group> --name <cluster_name>
 ```
 ## Deploy CTFD and Challenges Helm Chart
 ### Create secrets
@@ -74,7 +75,7 @@ helm install <release-name> ./ctf-helm
 # get ctfd ip address
 kubectl get svc ctf-svc -o jsonpath="{.status.loadBalancer.ingress[0].ip}"
 
-# get to ctfd url
+# get ctfd url
 echo -n http://$(kubectl get svc ctf-svc -o jsonpath="{.status.loadBalancer.ingress[0].ip}")
 
 # get hodor challenge ip
