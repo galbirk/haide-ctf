@@ -7,7 +7,7 @@ output "kubernetes_cluster_name" {
 }
 
 output "kube_config" {
-  value = azurerm_kubernetes_cluster.default.kube_admin_config_raw
+  value = azurerm_kubernetes_cluster.default.kube_config
 
   sensitive = true
 }
