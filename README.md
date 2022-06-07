@@ -1,5 +1,5 @@
 # haide-ctf
-CTFD based capture the flag application, deployed on AKS. This repository's challenges aim mostly to starters, but seasoned CTF players might also find some challenges very interesting and unconventional.
+CTFD based capture the flag application, deployed on AKS with helm chart. This repository's challenges aim mostly to starters, but seasoned CTF players might also find some challenges very interesting and unconventional.
 
 ## Disclaimer
 Ideas for some of these challenges were taken from other CTF events, or were inspired by them. We did alter the challeges a bit, so their flags won't be obvious in writeups of those challenges, but by any, we means do not take credit for them.  
