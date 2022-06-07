@@ -61,10 +61,10 @@ az aks get-credentials --resource-group <cluster_resource_group> --name <cluster
 *secrets names mentioned in [./ctf-helm/values.yaml](./ctf-helm/values.yaml)
 ```bash
 # create db secret
-kubectl create secret generic <db_secret_name_in_values.yaml> --from-literal=MYSQL_DATABASE=<db_name> --from-literal=MYSQL_PASSWORD=<db_password> --from-literal=MYSQL_ROOT_PASSWORD=<root_password> --from-literal=MYSQL_USER=<db_username> --dry-run=client -o json > ./ctf-helm/db-secret.yaml
+kubectl create secret generic <db_secret_name_in_values.yaml> --from-literal=MYSQL_DATABASE=<db_name> --from-literal=MYSQL_PASSWORD=<db_password> --from-literal=MYSQL_ROOT_PASSWORD=<root_password> --from-literal=MYSQL_USER=<db_username> --dry-run=client -o yaml > ./ctf-helm/templates/db-secret.yaml
 
 # create app secret
-kubectl create secret generic <app_secret_name_in_values.yaml> --from-literal=dbURL=mysql+pymysql://<db_username>:<db_password>@<db_service_name>/ctfd --dry-run=client -o json > ./ctf-helm/app-secret.yaml
+kubectl create secret generic <app_secret_name_in_values.yaml> --from-literal=dbURL=mysql+pymysql://<db_username>:<db_password>@<db_service_name>/ctfd --dry-run=client -o yaml > ./ctf-helm/templates/app-secret.yaml
 ```
 ### Important vaules in [./ctf-helm/values.yaml](./ctf-helm/values.yaml)
 * numberOfTeams - number of teams participating in the ctf (we recommend to number the teams from 0 onwards).
