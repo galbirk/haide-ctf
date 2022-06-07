@@ -124,11 +124,11 @@ kubectl get svc twentyfortyeight-svc -o jsonpath="{.status.loadBalancer.ingress[
 <b>Gal Birkman, DevOps Engineer.</b><br>
 <b>email:</b> galbirkman@gmail.com<br>
 <b>GitHub:</b> https://github.com/galbirk
-<br>
+<br>-------------------------------------------<br>
 <b>Eli Rudin, Security Researcher.</b><br>
 <b>email:</b> relikr@gmail.com<br>
 <b>GitHub:</b> https://github.com/RuBublik
-<br>
+<br>-------------------------------------------<br>
 <b>Guy Shalev, Security Researcher.</b><br>
 <b>email:</b> guy11112000@gmail.com<br>
 <b>GitHub:</b> https://github.com/GuySh1
