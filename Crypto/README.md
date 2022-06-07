@@ -1,6 +1,7 @@
-# C00pawns  
+# Crypto  
  
 * Description: figure this one out.
+* challenge: [cipher.txt](./cipher.txt)
 * Author: [Sochi Olympic CTF 2014](https://github.com/ctfs/write-ups-2014/tree/master/olympic-ctf-2014/crypting)  
 * Level: :star::star::star::star:
 * Dockerfile:

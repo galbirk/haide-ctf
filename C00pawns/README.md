@@ -1,6 +1,7 @@
 # C00pawns  
  
-* Author: [Rubublik](https://github.com/Rubublik)  
+* Author: [Rubublik](https://github.com/Rubublik) 
+* challenge: <b>ADD_MEMORY_IMAGE</b> 
 * Level: :star::star::star::star::star:
 * Dockerfile:
 * References:  
