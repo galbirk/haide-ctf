@@ -1,2 +1,0 @@
-encryption type:
-FLAG{aes-128}

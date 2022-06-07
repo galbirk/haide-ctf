@@ -1,20 +1,25 @@
 # haide-ctf
-CTFD based capture the flag application, deployed on AKS.
+CTFD based capture the flag application, deployed on AKS. This repository's challenges aim mostly to starters, but seasoned CTF players might also find some challenges very interesting and unconventional.
+
+## Disclaimer
+Ideas for some of these challenges were taken from other CTF events, or were inspired by them. We did alter the challeges a bit, so their flags won't be obvious in writeups of those challenges, but by any, we means do not take credit for them.  
 
 ## Table of Contents
-- [Requirements](#Requirements)
+- [Disclaimer](#disclaimer)
+- [Requirements](#requirements)
   * [Install terraform](#Install-terraform)
   * [Install kubectl](#install-kubectl)
-- [Deploy CTFD Platform](#Deploy-CTFD-Platform)
-  * [Clone git repository](#Clone-git-repository)
-  * [Config terraform](#Config-terraform)
+- [Deploy CTFD Platform](#deploy-ctfd-platform)
+  * [Clone git repository](#clone-git-repository)
+  * [Config terraform](#config-terraform)
   * [Deploy AKS Cluster with terraform](#deploy-aks-cluster-with-terraform)
   * [Get kubeconfig](#get-kubeconfig)
   * [Deploy CTFD and Challenges Helm Chart](#deploy-ctfd-and-challenges-helm-chart)
     * [Create secrets](#create-secrets)
     * [Important vaules in ./ctf-helm/values.yaml](#important-vaules-in-ctf-helmvaluesyamlctf-helmvaluesyaml)
     * [Install helm chart](#install-helm-chart)
-- [Docker Hub Images](#Docker-Hub-Images)
+- [Challenges](#challenges)
+- [Docker Hub Images](#docker-Hub-Images)
 - [Contributers](#contributers)
 
 # Requirements
@@ -91,6 +96,22 @@ kubectl get svc path-not-taken-svc -o jsonpath="{.status.loadBalancer.ingress[0]
 kubectl get svc twentyfortyeight-svc -o jsonpath="{.status.loadBalancer.ingress[0].ip}"
 ```
 
+# Challenges
+| Name | Category | Level | Competition/Authors |
+| :--- | :---: | :---: | :--- |
+| [2048](./2048/) | WEB | :star::star::star::star: | [SniperOJ/Wang Yihang](https://github.com/SniperOJ/Jeopardy-Challenges/tree/master/web#2048) |
+| [The Path Not Taken](./the-path-not-taken/)  | WEB | :star::star::star::star: | [Rubublik](https://github.com/RuBublik) |
+| [IceBreaker](./icebreaker/) | Network Forensics | :star::star::star::star::star: | [Rubublik](https://github.com/RuBublik) | 
+| [Babushka](./babushka/) | MISC | :star::star: | [GuySh1](https://github.com/Guysh1) |
+| [Crypto](./Crypto/) | MISC | :star: | [Sochi Olympic CTF 2014](https://github.com/ctfs/write-ups-2014/tree/master/olympic-ctf-2014/crypting) | 
+| [Hodor](./Hodor/) | MISC | :star::star::star::star: | [Rubublik](https://github.com/RuBublik) |
+| [JailBreak](./jailbreak/) | MISC | :star::star::star::star: | [Ringzer0team](https://github.com/SniperOJ/Jeopardy-Challenges/tree/master/misc#bash-jail) |
+| [Story Teller](./Storyteller/) | MISC | :star::star::star: | ? |
+| [What Am I](./WhatAmI/) | MISC | :star::star: | ? |
+| [FatherAndSon](./FatherAndSon/) | Memory Forensics | :star::star::star::star::star: | [GuySh1](https://github.com/Guysh1) |
+| [C00pawns](./C00pawns/) | Memory Forensics | :star::star::star::star::star: | [Rubublik](https://github.com/RuBublik) |
+
+
 # Docker Hub Images
 #### The images are published in Docker Hub:
 * [jailbreak image repository](https://hub.docker.com/repository/docker/galbirk/jail)
@@ -98,8 +119,17 @@ kubectl get svc twentyfortyeight-svc -o jsonpath="{.status.loadBalancer.ingress[
 * [2048 image repository](https://hub.docker.com/repository/docker/galbirk/twentyfortyeight)
 * [path not taken image repository](https://hub.docker.com/repository/docker/galbirk/path)
 
-# Contributers
+# Contributors
 
 <b>Gal Birkman, DevOps Engineer.</b><br>
 <b>email:</b> galbirkman@gmail.com<br>
 <b>GitHub:</b> https://github.com/galbirk
+<br>
+<b>Eli Rudin, Security Researcher.</b><br>
+<b>email:</b> relikr@gmail.com<br>
+<b>GitHub:</b> https://github.com/RuBublik
+<br>
+<b>Guy Shalev, Security Researcher.</b><br>
+<b>email:</b> guy11112000@gmail.com<br>
+<b>GitHub:</b> https://github.com/GuySh1
+

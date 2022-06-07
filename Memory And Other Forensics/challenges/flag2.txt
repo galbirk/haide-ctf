@@ -1,1 +1,0 @@
-pid of running notepad process: flag{4032}

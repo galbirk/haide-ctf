@@ -1,1 +1,0 @@
-Profile of memory image: flag{Win7SP1x64}
