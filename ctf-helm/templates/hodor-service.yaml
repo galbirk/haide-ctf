@@ -8,4 +8,4 @@ spec:
   ports:
   - port: {{ .Values.hodor.service.port }}
     targetPort: {{ .Values.hodor.service.targetPort }}
-  type: {{ .Values.hodor.service.type }}
+  type: ClusterIP

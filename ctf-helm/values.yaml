@@ -1,5 +1,15 @@
-# Number of Participents teams/players
+# Number of Participants teams/players
 numberOfTeams: 2
+
+global:
+  # Number of Participants teams/players
+  numberOfTeams: 2
+  TwentyFortyEight:
+    name: twentyfortyeight
+  jail:
+    name: jail
+  hodor:
+    name: hodor
 
 ctfd:
   name: ctf-app
@@ -10,8 +20,8 @@ ctfd:
   storageSize: 30Gi
   secretName: ctf-secret
   service:
-    type: LoadBalancer
-    port: 80
+    type: ClusterIP
+    port: 8000
 
 mariadb:
   name: mariadb
@@ -31,7 +41,7 @@ hodor:
   restartPolicy: Always
   image: galbirk/hodor:latest
   service:
-    type: LoadBalancer
+    type: ClusterIP
     port: 1337
     targetPort: 1337
 
@@ -42,7 +52,7 @@ path:
   restartPolicy: Always
   image: galbirk/path:latest
   service:
-    type: LoadBalancer
+    type: ClusterIP
     port: 80
     targetPort: 80
 
@@ -70,6 +80,6 @@ jail:
     port: 7007
     targetPort: 7007
 
-
-
-
+ingress-nginx: 
+  tcp: 
+    8000: "default/test-svc:80"

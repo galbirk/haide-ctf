@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: {{ .Values.jail.name }}
+spec:
+  selector:
+    matchLabels:
+      app: {{ .Values.jail.name }}
+  # used if we want the pods to create in parallel
+  podManagementPolicy: Parallel
+  # points to headless service
+  serviceName: {{ .Values.jail.name }}-svc
+  replicas: {{ .Values.numberOfTeams }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.jail.name }}
+    spec:
+      containers:
+      - name: {{ .Values.jail.name }}
+        image: {{ .Values.jail.image }}
+        env:
+          - name: PORT
+            value: "7007"
+        ports:
+          - containerPort: 7007
+        imagePullPolicy: Always

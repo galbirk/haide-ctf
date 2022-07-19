@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: {{ .Values.TwentyFortyEight.name }}
+spec:
+  selector:
+    matchLabels:
+      app: {{ .Values.TwentyFortyEight.name }}
+  # used if we want the pods to create in parallel
+  podManagementPolicy: Parallel
+  # points to headless service
+  serviceName: {{ .Values.TwentyFortyEight.name }}-svc
+  replicas: {{ .Values.numberOfTeams }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.TwentyFortyEight.name }}
+    spec:
+      containers:
+      - name: {{ .Values.TwentyFortyEight.name }}
+        image: {{ .Values.TwentyFortyEight.image }}
+        env:
+          - name: APACHE_PORT
+            value: "80"
+          - name: SSH_PORT
+            value: "22"
+        ports:
+          - containerPort: 80
+          - containerPort: 22

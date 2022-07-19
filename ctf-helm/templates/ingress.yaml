@@ -1,0 +1,26 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  namespace: {{ .Release.Namespace }}
+  name: {{ .Release.Name }}
+  annotations:
+    # nginx.ingress.kubernetes.io/rewrite-target: /$2
+spec:
+  ingressClassName: nginx
+  rules:
+  - http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: {{ .Values.ctfd.labels }}-svc
+            port:
+              number: {{ .Values.ctfd.service.port }}
+      - path: /path(/|$)(.*)
+        pathType: Prefix
+        backend:
+          service: 
+            name: {{ .Values.path.name }}-svc
+            port:
+                number: {{ .Values.path.service.port }}
