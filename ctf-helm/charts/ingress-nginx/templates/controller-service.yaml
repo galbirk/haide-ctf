@@ -96,6 +96,10 @@ spec:
       port: 1337
       protocol: TCP
       targetPort: 1337-tcp
+    - name: 8888-tcp
+      port: 8888
+      protocol: TCP
+      targetPort: 8888-tcp
   {{- range $key, $value := .Values.udp }}
     - name: {{ if $.Values.portNamePrefix }}{{ $.Values.portNamePrefix }}-{{ end }}{{ $key }}-udp
       port: {{ $key }}

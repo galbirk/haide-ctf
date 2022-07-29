@@ -150,6 +150,9 @@ spec:
             - name: 1337-tcp
               containerPort: 1337
               protocol: TCP
+            - name: 8888-tcp
+              containerPort: 8888
+              protocol: TCP
           {{- range $key, $value := .Values.udp }}
             - name: {{ if $.Values.portNamePrefix }}{{ $.Values.portNamePrefix }}-{{ end }}{{ $key }}-udp
               containerPort: {{ $key }}

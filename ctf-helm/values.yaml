@@ -10,6 +10,8 @@ global:
     name: jail
   hodor:
     name: hodor
+  path:
+    name: path-not-taken
 
 ctfd:
   name: ctf-app
@@ -37,7 +39,7 @@ mariadb:
 hodor:
   name: hodor
   labels: hodor
-  replicas: 1
+  replicas: 3
   restartPolicy: Always
   image: galbirk/hodor:latest
   service:
@@ -63,7 +65,7 @@ TwentyFortyEight:
   image: galbirk/twentyfortyeight:latest
   service:
     name: twentyfortyeight
-    type: LoadBalancer
+    type: ClusterIP
     port: 80
     targetPort: 80
 

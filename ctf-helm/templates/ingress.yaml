@@ -17,10 +17,10 @@ spec:
             name: {{ .Values.ctfd.labels }}-svc
             port:
               number: {{ .Values.ctfd.service.port }}
-      - path: /path(/|$)(.*)
-        pathType: Prefix
-        backend:
-          service: 
-            name: {{ .Values.path.name }}-svc
-            port:
-                number: {{ .Values.path.service.port }}
+      # - path: /path(/|$)(.*)
+      #   pathType: Prefix
+      #   backend:
+      #     service: 
+      #       name: {{ .Values.path.name }}-svc
+      #       port:
+      #           number: {{ .Values.path.service.port }}

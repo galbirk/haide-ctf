@@ -194,4 +194,5 @@ IngressClass parameters.
   "70{{ $i }}": "{{ $.Release.Namespace }}/{{ $.Values.global.jail.name }}-svc-{{ $i }}:7007"
 {{ end }}
 "1337": "{{ $.Release.Namespace }}/{{ $.Values.global.hodor.name }}-svc:1337"
+"8888": "{{ $.Release.Namespace }}/{{ $.Values.global.path.name }}-svc:80"
 {{- end -}}
